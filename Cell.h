@@ -1,14 +1,11 @@
 #include<iostream>
 using namespace std;
 
-//S: 
 class Cell{
 public:
 	int color, colorb;
 	bool is_source;
 	bool bridge;
-	int Load(string input)
-	{
-		return 0;
-	}
+    int Load(string input);
+    Cell():color(0),colorb(0),is_source(false),bridge(true){}
 };
