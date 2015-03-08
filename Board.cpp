@@ -6,18 +6,18 @@ Board Board::LoadProblem(string path)
 	    ifs.open(path, std::ifstream::in);
 		if(!ifs.is_open())
 		{
-			cerr<<"Load File Open Failure.\n";
+			cerr << "Load File Open Failure.\n";
 			exit(-1);
 		}
 		int rows, columns;
 		ifs >> rows >> columns;
 		Board board(rows, columns);
-		for(int i=0;i<board.cells_.size();i++)
-			for(int j=0;j<board.cells_[0].size();j++)
+		for(auto & row: board.cells_)
+			for(auto & cell: row)
 		{
 			string cell_info;
 			ifs >> cell_info;
-			board.cells_[i][j].Load(cell_info);
+			cell.Load(cell_info);
 		}
 		return board;
 	}

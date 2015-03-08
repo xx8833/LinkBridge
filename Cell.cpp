@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include <string>
 
 int Cell::Load(string input)
 {
