@@ -3,8 +3,8 @@ using namespace std;
 
 class Cell{
 public:
-	int input_color;
-	int curr_color;
+	int color, colorb;
+	bool is_source;
 	bool bridge;
 
 };
