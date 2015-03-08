@@ -1,6 +1,6 @@
 #include<iostream>
-#include<Board.h>
 #include<fstream>
+#include"Board.h"
 using namespace std;
 
 const string fileName = "OutputGraph.html";
