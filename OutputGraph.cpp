@@ -19,9 +19,19 @@ void ToHtml(Board BD1){
 
 	for(int i=0; i<BD1.cells_.size(); i++){
 		for(int j=0; j<BD1.cells_[0].size();j++){
-			fout<<"<rect x=\""<<i*40+100<<"\"";
-			fout<<"y=\""<<j*40+100<<"\"";
-			fout<<"width=\"40\" height=\"40\" style=\"fill:rgb("<<color_list[BD1.cells_[i][j].color][0]<<","<<color_list[BD1.cells_[i][j].color][1]<<","<<color_list[BD1.cells_[i][j].color][2]<<");stroke-width:3;stroke:rgb(0,0,0)\" />"<<endl;;
+			if (BD1.cells_[i][j].is_source){
+				fout << "<rect x=\"" << i * 40 + 100 << "\"";
+				fout << "y=\"" << j * 40 + 100 << "\"";
+				fout << "width=\"40\" height=\"40\" style=\"fill:rgb(255,255,255);stroke-width:3;stroke:rgb(0,0,0)\" />" << endl;
+				fout << "<circle cx=\"" << i * 40 + 120 << "\"";
+				fout << "cy=\"" << j * 40 + 120 << "\"";
+				fout << "r=\"20\" style=\"fill:rgb(" << color_list[BD1.cells_[i][j].color][0] << "," << color_list[BD1.cells_[i][j].color][1] << "," << color_list[BD1.cells_[i][j].color][2] << ");stroke-width:3;stroke:rgb(0,0,0)\" />" << endl;
+			}
+			else{
+				fout << "<rect x=\"" << i * 40 + 100 << "\"";
+				fout << "y=\"" << j * 40 + 100 << "\"";
+				fout << "width=\"40\" height=\"40\" style=\"fill:rgb(" << color_list[BD1.cells_[i][j].color][0] << "," << color_list[BD1.cells_[i][j].color][1] << "," << color_list[BD1.cells_[i][j].color][2] << ");stroke-width:3;stroke:rgb(0,0,0)\" />" << endl;;
+			}
 			if(BD1.cells_[i][j].bridge){
 				fout<<"<rect x=\""<<i*40+10+100<<"\"";
 				fout<<"y=\""<<j*40+100<<"\"";
@@ -39,8 +49,8 @@ void ToHtml(Board BD1){
 
 int main(){
 	Board BD(3,3);
-	BD.cells_[0][0].color = 1;BD.cells_[2][2].color = 1;
-	BD.cells_[1][0].color = 10;BD.cells_[0][1].color = 10;
+	BD.cells_[0][0].color = 1; BD.cells_[2][2].color = 1; BD.cells_[0][0].is_source = true;
+	BD.cells_[1][0].color = 10; BD.cells_[0][1].color = 10; BD.cells_[2][2].is_source = true;
 	BD.cells_[1][1].color = 5; BD.cells_[1][1].colorb = 7;BD.cells_[1][1].bridge = true;
 	ToHtml(BD);
 	return true;
